@@ -12,6 +12,7 @@ import { PrivadoPageComponent } from './componentes/privado-page/privado-page.co
 import { NotFoundPageComponent } from './componentes/not-found-page/not-found-page.component';
 
 import { AuthService } from './servicios/auth.service';
+import {AuthGuard} from './guards/auth.guard';
 
 import { environment } from '../environments/environment';
 // import { AngularFireModule } from 'angularfire2';
@@ -36,7 +37,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
