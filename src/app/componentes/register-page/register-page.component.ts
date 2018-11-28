@@ -25,16 +25,14 @@ export class RegisterPageComponent implements OnInit {
   onSubmitAddUser() {
     this.authService.registerUser(this.email, this.password)
       .then( (res) => {
-        // console.log('Bien');
         // console.log(res);
         this.flashMensaje.show('Registro realizado con éxito',
-          {cssClass: 'alert-success', timeout: 4000});
+          {cssClass: 'alert-success', timeout: 5000});
         this.router.navigate(['/privado']);
       }).catch( (err) => {
         this.flashMensaje.show(err.message,
-        {cssClass: 'alert-danger', timeout: 4000});
-        console.log('Error');
-        console.log(err);
+        {cssClass: 'alert-danger', timeout: 5000});
+        // console.log(err);
       });
   }
 

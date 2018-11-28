@@ -26,11 +26,11 @@ export class LoginPageComponent implements OnInit {
     this.authService.loginEmail(this.email, this.password)
       .then( (res) => {
         this.flashMensaje.show('Sesión iniciada correctamente',
-          {cssClass: 'alert-success', timeout: 4000});
+          {cssClass: 'alert-success', timeout: 5000});
         this.router.navigate(['/privado']);
       }).catch( (err) => {
         this.flashMensaje.show(err.message,
-        {cssClass: 'alert-danger', timeout: 4000});
+        {cssClass: 'alert-danger', timeout: 5000});
         console.log('Error');
         console.log(err);
         this.router.navigate(['/login']);
