@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AuthService} from '../servicios/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../servicios/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +20,17 @@ export class AuthGuard implements CanActivate {
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.afAuth.authState
-      .take(1)
-      .map(authState => !! authState)
-      .do( authenticated => {
-        if (!authenticated) {
-          this.router.navigate(['/login']);
-        }
-      });
+    state: RouterStateSnapshot): boolean {
+    console.log('isLogged ' + this.authService.isLogged);
+
+    if (this.authService.isLogged === true) {
+      console.log('Sesion iniciada');
+      return true;
+    } else {
+      console.log('Sesion no iniciada');
+      this.router.navigate(['/login']);
+      return false;
+    }
+
   }
 }

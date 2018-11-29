@@ -38,6 +38,14 @@ export class AuthService {
     return this.afAuth.authState.pipe(map (auth => auth));
   }
 
+  get isLogged(): boolean {
+    if (this.afAuth.auth.currentUser ==  null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   // Cerrar sesión
   logout() {
     return this.afAuth.auth.signOut();
